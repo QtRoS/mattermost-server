@@ -43,9 +43,9 @@ func (me *msgProvider) DoCommand(a *App, args *model.CommandArgs, message string
 	targetUsername := ""
 
 	if len(splitMessage) > 1 {
-		parsedMessage = strings.SplitN(message, " ", 2)[1]
+		parsedMessage = splitMessage[1]
 	}
-	targetUsername = strings.SplitN(message, " ", 2)[0]
+	targetUsername = splitMessage[0]
 	targetUsername = strings.TrimPrefix(targetUsername, "@")
 
 	userProfile, err := a.Srv.Store.User().GetByUsername(targetUsername)
